@@ -1,0 +1,28 @@
+{
+    "name": "Sit Stand Right",
+    "description": "gentle reminder of healthy posture!",
+    "version": "1.0",
+    "action": {
+        "default_icon": {
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        },
+        "default_title": "Blur the page"
+    },
+    "manifest_version": 3,
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "optional_permissions": [
+        "tabs"
+    ],
+    "host_permissions": [
+        "https://*.chrome.com/*",
+        "https://stackoverflow.com/*",
+        "https://medium.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
