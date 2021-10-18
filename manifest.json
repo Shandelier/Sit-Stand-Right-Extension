@@ -15,7 +15,9 @@
     "manifest_version": 2,
     "permissions": [
         "activeTab",
-        "storage"
+        "storage",
+        "http://*/",
+        "https://*/"
     ],
     "optional_permissions": [
         "tabs"
