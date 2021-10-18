@@ -2,27 +2,28 @@
     "name": "Sit Stand Right",
     "description": "gentle reminder of healthy posture!",
     "version": "1.0",
-    "action": {
+    "homepage_url": "http://sitstandright.com",
+    "browser_action": {
         "default_icon": {
+            "16": "icons/icon16.png",
+            "32": "icons/icon32.png",
             "48": "icons/icon48.png",
             "128": "icons/icon128.png"
         },
         "default_title": "Blur the page"
     },
-    "manifest_version": 3,
+    "manifest_version": 2,
     "permissions": [
         "activeTab",
-        "scripting"
+        "storage"
     ],
     "optional_permissions": [
         "tabs"
     ],
-    "host_permissions": [
-        "https://*.chrome.com/*",
-        "https://stackoverflow.com/*",
-        "https://medium.com/*"
-    ],
     "background": {
-        "service_worker": "background.js"
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
     }
 }

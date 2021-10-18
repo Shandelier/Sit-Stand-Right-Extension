@@ -1,17 +1,11 @@
-function blurPage(tab) {
-    console.log("bluuuuur")
-}
+let state = false;
 
-let mycss = "body {background-color: coral;}"
-
-chrome.action.onClicked.addListener((tab) => {
-    chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        func: blurPage,
-        args: [tab]
-    })
-    chrome.scripting.insertCSS({
-        target: { tabId: tab.id },
-        files: ["css/blur.css"]
-    });
+chrome.browserAction.onClicked.addListener(function (tab) {
+    if (!state) {
+        chrome.tabs.insertCSS(null, { file: "css/blur.css" });
+        state = !state;
+        return;
+    }
+    chrome.tabs.insertCSS(null, { file: "css/normal.css" });
+    state = !state;
 });
