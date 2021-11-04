@@ -19,28 +19,22 @@
     "google"
   ],
   "scripts": {
-    "copy": "@powershell copy 'src\\content.js' 'dist\\src\\' && @powershell copy 'src\\imagenet_classes.js' 'dist\\src\\' && @powershell copy 'src\\static\\manifest.json' 'dist\\' && @powershell copy 'src\\static\\icons\\*' 'dist\\src\\icons\\'",
-    "build": "parcel build src/background.js -d dist/src/ -o background && npm run copy",
-    "watch": "npm run copy && parcel watch src/background.js --hmr-hostname localhost -d dist/src/ -o background"
+    "clean": "rm -rf dist/*",
+    "copy": "rsync -aq src/content.js dist/src/ && rsync -aq src/imagenet_classes.js dist/src/ && rsync -aq manifest.json dist/ && rsync -aq src/icons/* dist/src/icons/",
+    "build": "npm run clean && parcel build src/background.js --dist-dir dist/src/ && npm run copy",
+    "watch": "npm run copy && parcel watch src/background.js --hmr-hostname localhost --dist-dir dist/src/ -o background"
   },
-  "author": "Karol Kłusek",
-  "contributors": [
-    {
-      "name": "Jouni Kontinen",
-      "email": "jouni.kontinen___polarspin.com",
-      "url": "https://www.polarspin.com"
-    }
-  ],
   "license": "Apache 2.0",
-  "devDependencies": {
+  "dependencies": {
+    "-": "^0.0.1",
+    "@tensorflow/tfjs": "^0.9.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "clang-format": "^1.2.3",
-    "parcel-bundler": "^1.7.1",
     "parcel-plugin-static-files-copy": "^2.6.0"
   },
-  "dependencies": {
-    "@tensorflow/tfjs": "^0.9.1"
+  "devDependencies": {
+    "parcel": "^2.0.0"
   }
 }
