@@ -2,39 +2,17 @@
   "name": "Sit_Stand_Right",
   "version": "0.1.0",
   "description": "gentle reminder of healthy posture!",
-  "keywords": [
-    "tensorflow",
-    "tf",
-    "tensor",
-    "machine learning",
-    "ml",
-    "ai",
-    "neural networks",
-    "neuralnetworks",
-    "deeplearning",
-    "model",
-    "image recognition",
-    "chrome extension",
-    "chrome",
-    "google"
-  ],
   "scripts": {
     "clean": "rm -rf dist/*",
-    "copy": "rsync -aq src/content.js dist/src/ && rsync -aq src/imagenet_classes.js dist/src/ && rsync -aq manifest.json dist/ && rsync -aq src/icons/* dist/src/icons/",
+    "copy": "rsync -aq src/content.js dist/src/ && rsync -aq src/css/* dist/src/css && rsync -aq manifest.json dist/ && rsync -aq src/icons/* dist/src/icons/",
     "build": "npm run clean && parcel build src/background.js --dist-dir dist/src/ && npm run copy",
-    "watch": "npm run copy && parcel watch src/background.js --hmr-hostname localhost --dist-dir dist/src/ -o background"
+    "watch": "npm run copy && parcel watch src/background.js --dist-dir dist/src/"
   },
   "license": "Apache 2.0",
-  "dependencies": {
-    "-": "^0.0.1",
-    "@tensorflow/tfjs": "^0.9.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "clang-format": "^1.2.3",
-    "parcel-plugin-static-files-copy": "^2.6.0"
-  },
   "devDependencies": {
     "parcel": "^2.0.0"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^3.11.0"
   }
 }
