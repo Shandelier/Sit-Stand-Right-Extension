@@ -1,0 +1,18 @@
+{
+  "name": "Sit_Stand_Right",
+  "version": "0.1.0",
+  "description": "gentle reminder of healthy posture!",
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "copy": "rsync -aq src/content.js dist/src/ && rsync -aq src/css/* dist/src/css && rsync -aq manifest.json dist/ && rsync -aq src/icons/* dist/src/icons/",
+    "build": "npm run clean && parcel build src/background.js --dist-dir dist/src/ && npm run copy",
+    "watch": "npm run copy && parcel watch src/background.js --dist-dir dist/src/"
+  },
+  "license": "Apache 2.0",
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^3.11.0"
+  }
+}
