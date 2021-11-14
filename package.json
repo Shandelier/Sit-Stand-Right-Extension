@@ -5,8 +5,8 @@
   "scripts": {
     "clean": "rm -rf dist/*",
     "reset": "rm -rf node_modules/ && npm i",
-    "copy": "rsync -aq src/content.js dist/src/ && rsync -aq src/css/* dist/src/css && rsync -aq manifest.json dist/ && rsync -aq src/icons/* dist/src/icons/ && rsync -aq src/options/* dist/src/options/",
-    "build": "cross-env NODE_ENV=production npm run clean && parcel build src/background.js --dist-dir dist/src/ && npm run copy",
+    "copy": "rsync -aq src/content.js dist/src/ && rsync -aq src/css/* dist/src/css && rsync -aq manifest.json dist/ && rsync -aq src/icons/* dist/src/icons/ && rsync -aq src/options/options.html dist/src/options/",
+    "build": "cross-env NODE_ENV=production npm run clean && parcel build src/background.js --dist-dir dist/src/ && parcel build src/options/options.js --dist-dir dist/src/options && npm run copy",
     "watch": "cross-env NODE_ENV=development npm run copy && parcel watch src/background.js --dist-dir dist/src/"
   },
   "license": "Apache-2.0",
