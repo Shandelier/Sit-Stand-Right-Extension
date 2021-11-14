@@ -4,15 +4,30 @@
   "description": "gentle reminder of healthy posture!",
   "scripts": {
     "clean": "rm -rf dist/*",
-    "copy": "rsync -aq src/content.js dist/src/ && rsync -aq src/css/* dist/src/css && rsync -aq manifest.json dist/ && rsync -aq src/icons/* dist/src/icons/",
-    "build": "npm run clean && parcel build src/background.js --dist-dir dist/src/ && npm run copy",
-    "watch": "npm run copy && parcel watch src/background.js --dist-dir dist/src/"
+    "reset": "rm -rf node_modules/ && npm i",
+    "copy": "rsync -aq src/content.js dist/src/ && rsync -aq src/css/* dist/src/css && rsync -aq manifest.json dist/ && rsync -aq src/icons/* dist/src/icons/ && rsync -aq src/options/* dist/src/options/",
+    "build": "cross-env NODE_ENV=production npm run clean && parcel build src/background.js --dist-dir dist/src/ && npm run copy",
+    "watch": "cross-env NODE_ENV=development npm run copy && parcel watch src/background.js --dist-dir dist/src/"
   },
-  "license": "Apache 2.0",
-  "devDependencies": {
-    "parcel": "^2.0.0"
-  },
+  "license": "Apache-2.0",
   "dependencies": {
-    "@tensorflow/tfjs": "^3.11.0"
+    "@mediapipe/pose": "^0.4.0",
+    "@tensorflow-models/pose-detection": "file:../tfjs-models/pose-detection/dist",
+    "@vladmandic/tfjs": "../tfjs-custom",
+    "dat.gui": "^0.7.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/preset-env": "^7.7.6",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "clang-format": "~1.2.2",
+    "cross-env": "^5.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-google": "^0.14.0",
+    "parcel": "^2.0.0",
+    "parcel-plugin-static-files-copy": "^2.5.1",
+    "yalc": "~1.0.0-pre.50"
   }
 }
