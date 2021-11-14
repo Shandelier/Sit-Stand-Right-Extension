@@ -13,7 +13,7 @@ import { setupStats } from './stats_panel'
 import { setBackendAndEnvFlags } from './util'
 import { loadModel } from './model'
 
-let debug = true
+
 let detector, camera, stats, model
 let startInferenceTime,
     numInferences = 0
@@ -135,16 +135,12 @@ async function renderResult() {
         poses_flat.push(poses[0].keypoints[i].score)
     }
 
-    if (debug) {
-        console.log(`poses`, poses)
-        console.log(`poses_flat`, poses_flat)
-        // console.log(`w`, w)
-        // console.log(`h`, h)
-    }
+    console.log(`poses`, poses)
+    console.log(`poses_flat`, poses_flat)
+    console.log(`w`, w)
+    console.log(`h`, h)
 
-    let points_tensor = tf.tensor([poses_flat])
-    // points_tensor = tf.reshape(points_tensor, [1, 51])
-
+    let points_tensor = tf.tensor([poses_flat]).reshape([1, 51])
     // ten.print()
     // ten = normalize(ten)
     // ten.print()
@@ -190,7 +186,7 @@ async function app() {
 
     detector = await createDetector()
 
-    console.log("Detector: ", detector)
+    console.log(detector)
 
     model = await loadModel()
 

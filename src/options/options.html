@@ -6,11 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hey Mom!</title>
-    <script src="options.js"></script>
+    <script src="options.js" defer></script>
 </head>
 
 <body>
-
+    <div>
+        <h1>Pred score {{ getHerePredScore }}</h1>
+        <div>Hello AI Overlords!</div>
+        <div id="stats"></div>
+        <div id="main">
+            <div class="container">
+                <div class="canvas-wrapper">
+                    <canvas id="output"></canvas>
+                    <video id="video" playsinline style="
+                  -webkit-transform: scaleX(-1);
+                  transform: scaleX(-1);
+                  visibility: hidden;
+                  width: auto;
+                  height: auto;
+                "></video>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rm -rf dist/*",
     "reset": "rm -rf node_modules/ && npm i",
-    "copy": "rsync -aq src/content.js dist/src/ && rsync -aq src/css/* dist/src/css && rsync -aq manifest.json dist/ && rsync -aq src/icons/* dist/src/icons/ && rsync -aq src/options/options.html dist/src/options/",
+    "copy": "rsync -aq src/content.js dist/src/ && rsync -aq src/css/* dist/src/css && rsync -aq manifest.json dist/ && rsync -aq src/icons/* dist/src/icons/ && rsync -aq src/options/options.html dist/src/options/ && rsync -aq model/* dist/model/",
     "build": "cross-env NODE_ENV=production npm run clean && parcel build src/background.js --dist-dir dist/src/ && parcel build src/options/options.js --dist-dir dist/src/options && npm run copy",
     "watch": "cross-env NODE_ENV=development npm run copy && parcel watch src/background.js --dist-dir dist/src/"
   },
@@ -14,7 +14,8 @@
     "@mediapipe/pose": "^0.4.0",
     "@tensorflow-models/pose-detection": "file:../tfjs-models/pose-detection/dist",
     "@vladmandic/tfjs": "../tfjs-custom",
-    "dat.gui": "^0.7.7"
+    "dat.gui": "^0.7.7",
+    "stats-js": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",

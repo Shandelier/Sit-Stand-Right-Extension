@@ -45,5 +45,9 @@
         "page": "src/options/options.html",
         "open_in_tab": true
     },
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "web_accessible_resources": [
+        "model/128/group1-shard1of1.bin",
+        "model/128/model.json"
+    ]
 }
